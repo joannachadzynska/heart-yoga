@@ -1,12 +1,36 @@
 {
-  "name": "heart-yoga",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": " <Your Name> (example.com)",
-  "license": "MIT"
+    "name": "heart-yoga",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "private": true,
+    "dependencies": {
+        "next": "^11.0.1",
+        "next-mdx-remote": "^3.0.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.11",
+        "eslint": "^7.29.0",
+        "eslint-config-next": "^11.0.1",
+        "typescript": "^4.3.4"
+    },
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/joannachadzynska/heart-yoga.git"
+    },
+    "keywords": [],
+    "author": "Joanna Chądzyńska <jmalek87@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/joannachadzynska/heart-yoga/issues"
+    },
+    "homepage": "https://github.com/joannachadzynska/heart-yoga#readme"
 }
