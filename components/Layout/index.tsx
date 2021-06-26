@@ -14,7 +14,7 @@ export interface LayoutProps {
 
 const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
     return (
-        <div className={styles.container}>
+        <>
             <Head>
                 <link rel='icon' href='/favicon.ico' />
                 <meta
@@ -67,15 +67,8 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
                     </>
                 )}
             </header>
-            <main>{children}</main>
-            {!home && (
-                <div className={styles.backToHome}>
-                    <Link href='/'>
-                        <a>← Back to home</a>
-                    </Link>
-                </div>
-            )}
-        </div>
+            <section className={utilStyles.container}>{children}</section>
+        </>
     );
 };
 
