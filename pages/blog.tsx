@@ -1,23 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/jsx-key */
 import { siteTitle } from "@/components/Layout";
-import { gql } from "@apollo/client";
 import { Layout } from "components";
+import { imageToString, sanityClient } from "lib/sanity";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import utilStyles from "styles/utils.module.scss";
 import { Post } from "types/post";
-import apolloClient from "./../apolloClient";
 
-export interface QueryResponseAll {
-    data: {
-        allPost: Post[];
-    };
-    loading: boolean;
-    networkStatus: number;
-}
+const postQuery = `*[_type=="post"]{
+    _id,
+    slug,
+    "author": author->name,
+    excerpt,
+    publishedAt,
+    mainImage,
+    title
+}`;
 
-const Blog = ({ posts }: { posts: QueryResponseAll }) => {
-    const { data, loading, networkStatus } = posts;
+const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
+    console.log(posts);
 
     return (
         <Layout>
@@ -29,17 +32,25 @@ const Blog = ({ posts }: { posts: QueryResponseAll }) => {
                 className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
-                    {data.allPost.map((post) => (
-                        <li className={utilStyles.listItem} key={post._id}>
-                            <Link href={`/posts/${post._id}`}>
-                                <a>{post.title}</a>
-                            </Link>
-                            <br />
-                            <small className={utilStyles.lightText}>
-                                {post.publishedAt}
-                            </small>
-                        </li>
-                    ))}
+                    {posts.length > 0 &&
+                        posts.map((post) => (
+                            <li key={post._id}>
+                                <Link href={`/posts/${post.slug.current}`}>
+                                    <a>
+                                        <img
+                                            src={imageToString(post.mainImage)}
+                                            alt={post.mainImage?.alt}
+                                        />
+                                        <span>{post.title}</span>
+                                    </a>
+                                </Link>
+                                <br />
+                                <small className={utilStyles.lightText}>
+                                    {post.publishedAt}
+                                </small>
+                                <small>{post.author}</small>
+                            </li>
+                        ))}
                 </ul>
             </section>
         </Layout>
@@ -47,29 +58,11 @@ const Blog = ({ posts }: { posts: QueryResponseAll }) => {
 };
 
 export const getStaticProps = async () => {
-    const data = await apolloClient.query({
-        query: gql`
-            {
-                allPost(sort: [{ _createdAt: DESC }]) {
-                    _id
-                    title
-                    publishedAt
-                    author {
-                        name
-                    }
-                    publishedAt
-                    bodyRaw
-                    slug {
-                        current
-                    }
-                }
-            }
-        `,
-    });
+    const posts = await sanityClient.fetch(postQuery);
 
     return {
         props: {
-            posts: data,
+            posts,
         },
     };
 };
