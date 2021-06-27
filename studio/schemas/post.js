@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: "post",
     title: "Post",
@@ -80,6 +81,27 @@ export default {
             name: "body",
             title: "Body",
             type: "blockContent",
+        },
+        {
+            name: "likes",
+            title: "Likes",
+            type: "number",
+        },
+        {
+            name: "links",
+            title: "Links",
+            type: "array",
+            of: [
+                {
+                    type: "url",
+                    name: "href",
+                    title: "Link",
+                    validation: (Rule) =>
+                        Rule.uri({
+                            scheme: ["http", "https", "mailto", "tel"],
+                        }),
+                },
+            ],
         },
     ],
 
