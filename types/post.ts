@@ -18,15 +18,6 @@ export interface PostBodyChildren {
     text: string;
 }
 
-export interface PostMainImageRef {
-    _type: string;
-    alt: string;
-    asset: {
-        _ref: string;
-        _type: string;
-    };
-}
-
 export interface ImageGallery {
     _key: string;
     _type: string;
@@ -48,13 +39,21 @@ export interface PostImage {
         url: string;
     };
 }
+export interface PostMainImageRef {
+    _type: string;
+    alt: string;
+    asset: {
+        _ref: string;
+        _type: string;
+    };
+}
 
 export interface Post {
     _id: string;
     author: PostAuthorRef;
     body: PostBody[];
     excerpt: string;
-    mainImage: PostMainImageRef | PostImage;
+    mainImage: PostImage;
     imagesGallery: ImageGallery[];
     publishedAt: string;
     slug: PostSlug;
