@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Layout } from "components";
 import { PortableText, sanityClient, usePreviewSubscription } from "lib/sanity";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Post as IPost } from "types/post";
@@ -75,24 +75,17 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
                     <h1>{title}</h1>
                     <button onClick={addLike}>{likes} ❤</button>
                     <main>
-                        <Image
-                            src={mainImage.asset?.url}
-                            alt={mainImage.alt}
-                            width={500}
-                            height={500}
-                        />
+                        <img src={mainImage.asset?.url} alt={mainImage.alt} />
 
                         <PortableText blocks={body} />
 
                         <br />
                         <div>
                             {imagesGallery.map((img) => (
-                                <Image
+                                <img
                                     key={img._key}
                                     src={img.asset.url}
                                     alt={img.alt}
-                                    width={500}
-                                    height={500}
                                 />
                             ))}
                         </div>

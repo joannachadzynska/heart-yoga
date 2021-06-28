@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import utilStyles from "styles/utils.module.scss";
@@ -33,28 +32,28 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
             <header className={styles.header}>
                 {home ? (
                     <>
-                        <Image
+                        {/* <Image
                             priority
                             src='/images/profile.jpg'
                             className={utilStyles.borderCircle}
                             height={144}
                             width={144}
                             alt={name}
-                        />
+                        /> */}
                         <h1 className={utilStyles.heading2Xl}>{name}</h1>
                     </>
                 ) : (
                     <>
                         <Link href='/'>
                             <a>
-                                <Image
+                                {/* <Image
                                     priority
                                     src='/images/profile.jpg'
                                     className={utilStyles.borderCircle}
                                     height={108}
                                     width={108}
                                     alt={name}
-                                />
+                                /> */}
                             </a>
                         </Link>
                         <h2 className={utilStyles.headingLg}>

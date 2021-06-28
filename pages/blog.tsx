@@ -26,8 +26,6 @@ const postQuery = `*[_type=="post"]{
 }`;
 
 const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
-    console.log(posts);
-
     return (
         <Layout>
             <Head>
