@@ -83,7 +83,7 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
                         <div>
                             {imagesGallery.map((img) => (
                                 <img
-                                    key={img._key}
+                                    key={img._key + img.alt}
                                     src={img.asset.url}
                                     alt={img.alt}
                                 />
@@ -128,10 +128,7 @@ export const getStaticProps = async ({ params }: any) => {
             data: post,
             preview: true,
         },
-        // Next.js will attempt to re-generate the page:
-        // - When a request comes in
-        // - At most once every 10 seconds
-        revalidate: 10, // In seconds
+        revalidate: 10,
     };
 };
 
