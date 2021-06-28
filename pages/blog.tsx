@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-key */
 import { siteTitle } from "@/components/Layout";
 import { Layout } from "components";
-import { imageToString, sanityClient } from "lib/sanity";
+import { sanityClient } from "lib/sanity";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
@@ -15,8 +15,14 @@ const postQuery = `*[_type=="post"]{
     "author": author->name,
     excerpt,
     publishedAt,
-    mainImage,
-    title
+    title,
+    mainImage{
+        alt,
+        "asset": asset->{
+        _id,
+        url
+        }
+    }
 }`;
 
 const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
@@ -38,7 +44,7 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
                                 <Link href={`/posts/${post.slug.current}`}>
                                     <a>
                                         <img
-                                            src={imageToString(post.mainImage)}
+                                            src={post.mainImage.asset.url}
                                             alt={post.mainImage?.alt}
                                         />
                                         <span>{post.title}</span>
