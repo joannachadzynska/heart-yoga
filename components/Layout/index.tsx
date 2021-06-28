@@ -15,7 +15,7 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
     return (
         <>
             <Head>
-                <link rel='icon' href='/logo.jpg' type='image/jpg' />
+                <link rel='icon' href='/logo.png' type='image/jpg' />
                 <meta
                     name='description'
                     content='Learn how to build a personal website using Next.js'
