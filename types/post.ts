@@ -58,4 +58,5 @@ export interface Post {
     publishedAt: string;
     slug: PostSlug;
     title: string;
+    likes: number;
 }

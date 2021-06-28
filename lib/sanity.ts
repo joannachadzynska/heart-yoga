@@ -10,7 +10,7 @@ const config = {
     projectId: "8x435qri",
     dataset: "production",
     apiVersion: "2021-03-25",
-    useCdn: true,
+    useCdn: false,
 };
 
 export const sanityClient = createClient(config);

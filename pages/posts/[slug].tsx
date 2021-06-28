@@ -1,15 +1,16 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Layout } from "components";
-// import {usePreviewSubscription} from 'lib/sanity'
-import { imageToString, PortableText, sanityClient } from "lib/sanity";
+import { PortableText, sanityClient, usePreviewSubscription } from "lib/sanity";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Post as IPost } from "types/post";
 
 const postQuery = `*[_type=="post" && slug.current == $slug][0]{
     "author": author->name,
     body,
+    _id,
     publishedAt,
     slug,
     title,
@@ -26,52 +27,71 @@ const postQuery = `*[_type=="post" && slug.current == $slug][0]{
         _id,
         url
         }
-    }
+    },
+    likes
 }`;
 
-const Post = ({ post }: { post: IPost }) => {
-    const { title, mainImage, body, publishedAt, author, imagesGallery } = post;
+const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
+    if (!data) return <div>Loading...</div>;
+    const { data: post }: { data: IPost } = usePreviewSubscription(postQuery, {
+        params: { slug: data.slug?.current },
+        initialData: data,
+        enabled: preview,
+    });
+    const { _id, body, title, mainImage, imagesGallery, author, publishedAt } =
+        post;
+
+    const [likes, setLikes] = useState(data.likes);
+
+    const addLike = async () => {
+        try {
+            const res = await fetch("/api/handle-like", {
+                method: "POST",
+                body: JSON.stringify({ _id: _id }),
+            });
+            const data = await res.json();
+            setLikes(data.likes);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <Layout>
             <Head>
-                <title>{title.replace(/['"]+/g, "")}</title>
+                <title>{title}</title>
             </Head>
-            <article>
-                <h1>{title.replace(/['"]+/g, "")}</h1>
-                <main>
-                    <div
-                        style={{
-                            width: "100px",
-                            height: "200px",
-                            position: "relative",
-                        }}>
+            {post !== null && (
+                <article>
+                    <h1>{title}</h1>
+                    <button onClick={addLike}>{likes} ❤</button>
+                    <main>
                         <Image
                             src={mainImage.asset?.url}
                             alt={mainImage.alt}
-                            layout='fill'
+                            width={500}
+                            height={500}
                         />
-                    </div>
 
-                    <PortableText blocks={body} />
+                        <PortableText blocks={body} />
 
-                    <br />
-                    <div>
-                        {imagesGallery.map((img) => (
-                            <img
-                                key={img._key}
-                                src={imageToString(img.asset.url)}
-                                alt={img.alt}
-                            />
-                        ))}
-                    </div>
-                    <small>{publishedAt}</small>
-                    <small>{author}</small>
-                </main>
-                {/* <h1>{data.Post.title.toString()}</h1>
-                <small>{data.Post.publishedAt}</small>
-                <p>{data.Post.bodyRaw.map((body) => body.children[0].text)}</p> */}
-            </article>
+                        <br />
+                        <div>
+                            {imagesGallery.map((img) => (
+                                <Image
+                                    key={img._key}
+                                    src={img.asset.url}
+                                    alt={img.alt}
+                                    width={500}
+                                    height={500}
+                                />
+                            ))}
+                        </div>
+                        <small>{publishedAt}</small>
+                        <small>{author}</small>
+                    </main>
+                </article>
+            )}
 
             <h2>
                 <Link href='/blog'>
@@ -102,7 +122,10 @@ export const getStaticProps = async ({ params }: any) => {
     const post = await sanityClient.fetch(postQuery, { slug });
 
     return {
-        props: { post },
+        props: {
+            data: post,
+            preview: true,
+        },
     };
 };
 

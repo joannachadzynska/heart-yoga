@@ -105,17 +105,30 @@ export default {
         },
     ],
 
+    initialValue: {
+        likes: 0,
+    },
+
     preview: {
         select: {
             title: "title",
             author: "author.name",
             media: "mainImage",
+            subMedia: "imagesGallery",
         },
-        prepare(selection) {
-            const { author } = selection;
-            return Object.assign({}, selection, {
-                subtitle: author && `by ${author}`,
-            });
+        prepare({ title, author, media, subMedia }) {
+            return {
+                title,
+                media,
+                author,
+                subMedia,
+            };
         },
+        // prepare(selection) {
+        //     const { author } = selection;
+        //     return Object.assign({}, selection, {
+        //         subtitle: author && `by ${author}`,
+        //     });
+        // },
     },
 };
