@@ -1,0 +1,22 @@
+body,
+#__next {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+}
+
+header,
+main {
+    flex: 1;
+    margin-top: 1rem;
+}
+
+footer {
+    flex-shrink: 0;
+}
