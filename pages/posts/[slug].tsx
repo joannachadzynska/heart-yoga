@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Layout } from "components";
 import { PortableText, sanityClient, usePreviewSubscription } from "lib/sanity";
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,12 +33,20 @@ const postQuery = `*[_type=="post" && slug.current == $slug][0]{
 }`;
 
 const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return <div>Loading...</div>;
+    }
+
     if (!data) return <div>Loading...</div>;
+
     const { data: post }: { data: IPost } = usePreviewSubscription(postQuery, {
         params: { slug: data.slug?.current },
         initialData: data,
         enabled: preview,
     });
+
     const { _id, body, title, mainImage, imagesGallery, author, publishedAt } =
         post;
 
