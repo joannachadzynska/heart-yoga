@@ -1,6 +1,5 @@
 import { Layout } from "components";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
 
 const Home = () => {
@@ -11,12 +10,19 @@ const Home = () => {
                 <meta name='Rytm Serca' />
             </Head>
 
-            <h1 className='title'>
-                Read{" "}
-                <Link href='/posts/first-post'>
-                    <a>this page!</a>
-                </Link>
-            </h1>
+            <div className='hero'>hero banner</div>
+
+            <section className='intro'>intro</section>
+
+            <section className='yoga-styles'>yoga styles</section>
+
+            <section className='about-me' id='about-me'>
+                about me
+            </section>
+
+            <section className='testimonials' id='testimonials'>
+                testimonials
+            </section>
         </Layout>
     );
 };

@@ -32,8 +32,7 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
                 <title>{siteTitle}</title>
             </Head>
 
-            <section
-                className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+            <>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
                     {posts.length > 0 &&
@@ -56,7 +55,7 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
                             </li>
                         ))}
                 </ul>
-            </section>
+            </>
         </Layout>
     );
 };
