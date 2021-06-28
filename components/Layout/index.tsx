@@ -4,8 +4,8 @@ import * as React from "react";
 import utilStyles from "styles/utils.module.scss";
 import styles from "./layout.module.scss";
 
-const name = "Your Name";
-export const siteTitle = "Next.js Sample Website";
+const name = "Kinga";
+export const siteTitle = "Kinga Arii Yoga";
 
 export interface LayoutProps {
     home?: boolean;
@@ -15,7 +15,7 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
     return (
         <>
             <Head>
-                <link rel='icon' href='/favicon.ico' />
+                <link rel='icon' href='/logo.jpg' type='image/jpg' />
                 <meta
                     name='description'
                     content='Learn how to build a personal website using Next.js'
