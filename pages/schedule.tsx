@@ -1,4 +1,4 @@
-import { Layout } from "components";
+import { Layout, ScheduleContainer } from "components";
 import Head from "next/head";
 import React from "react";
 
@@ -10,7 +10,7 @@ const Schedule = () => {
                 <meta name='Rytm Serca' />
             </Head>
 
-            <Schedule />
+            <ScheduleContainer />
         </Layout>
     );
 };

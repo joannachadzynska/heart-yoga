@@ -1,13 +1,8 @@
 import MountTransition from "@/utils/pageTransition";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Footer, Header } from "components";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import "styles/globals.scss";
-
-library.add(fab, fas);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     // The handler to smoothly scroll the element into view
