@@ -9,6 +9,7 @@ import category from "./category";
 import page from "./page";
 import post from "./post";
 import schedule from "./schedule";
+import yogaStyle from "./yogaStyle";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +25,7 @@ export default createSchema({
         category,
         page,
         schedule,
+        yogaStyle,
         // When added to this list, object types can be used as
         // { type: 'typename' } in other document schemas
         blockContent,
