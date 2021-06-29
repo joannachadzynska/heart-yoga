@@ -1,6 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
+import {
+    EmailIcon,
+    FacebookLogo,
+    InstagramLogo,
+    PhoneIcon,
+} from "./components";
 import styles from "./footer.module.scss";
 
 export interface FooterProps {}
@@ -33,22 +38,22 @@ const Footer: React.SFC<FooterProps> = () => {
                     <SocialLink
                         href='https://www.instagram.com/kingaariiyoga/'
                         label='Kinga Arii Yoga instagram'>
-                        <FontAwesomeIcon icon={["fab", "instagram"]} />
+                        <InstagramLogo />
                     </SocialLink>
                     <SocialLink
                         href='https://www.facebook.com/kingaariiyoga'
                         label='Kinga Arii Yoga facebook'>
-                        <FontAwesomeIcon icon={["fab", "facebook"]} />
+                        <FacebookLogo />
                     </SocialLink>
                     <SocialLink
                         href='mailto:kingaarii@wp.pl;jmalek87@gmail.com?subject=Zapytanie o kurs'
                         label='Kinga Arii Yoga email'>
-                        <FontAwesomeIcon icon={["fas", "envelope"]} />
+                        <EmailIcon />
                     </SocialLink>
                     <SocialLink
                         href='tel:+48731666097'
                         label='Kinga Arii Yoga phone'>
-                        <FontAwesomeIcon icon={["fas", "phone-alt"]} />
+                        <PhoneIcon />
                     </SocialLink>
                 </div>
                 <div className={styles.copy}>
