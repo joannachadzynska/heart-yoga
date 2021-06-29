@@ -1,5 +1,5 @@
 import MountTransition from "@/utils/pageTransition";
-import { Footer, Header } from "components";
+import { Footer } from "components";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import "styles/globals.scss";
@@ -32,11 +32,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             onExitComplete={handleExitComplete}
             initial={false}>
             <MountTransition routeKey={router.route} slideUp={0} slide={30}>
-                <Header />
-
-                <main>
-                    <Component {...pageProps} />
-                </main>
+                <Component {...pageProps} />
 
                 <Footer />
             </MountTransition>

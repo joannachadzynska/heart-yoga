@@ -4,7 +4,7 @@ import React from "react";
 
 const Schedule = () => {
     return (
-        <Layout>
+        <Layout page='schedule'>
             <Head>
                 <title>Grafik</title>
                 <meta name='Rytm Serca' />

@@ -4,7 +4,7 @@ import React from "react";
 
 const Home = () => {
     return (
-        <Layout home>
+        <Layout home page='home'>
             <Head>
                 <title>Rytm Serca</title>
                 <meta name='Rytm Serca' />

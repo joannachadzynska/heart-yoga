@@ -27,12 +27,12 @@ const postQuery = `*[_type=="post"]{
 
 const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
     return (
-        <Layout>
+        <Layout page='blog'>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
 
-            <>
+            <section className='container'>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
                     {posts.length > 0 &&
@@ -55,7 +55,7 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
                             </li>
                         ))}
                 </ul>
-            </>
+            </section>
         </Layout>
     );
 };

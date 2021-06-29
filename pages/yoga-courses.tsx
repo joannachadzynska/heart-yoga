@@ -2,17 +2,19 @@ import { Layout } from "components";
 import Head from "next/head";
 import React from "react";
 
-const Yoga = () => {
+const YogaCourses = () => {
     return (
-        <Layout>
+        <Layout page='yoga-courses'>
             <Head>
                 <title>Kurs Jogi</title>
                 <meta name='Rytm Serca' />
             </Head>
 
-            <h1 className='title'>Kursy jogi</h1>
+            <section className='container'>
+                <h1 className='title'>Kursy jogi</h1>
+            </section>
         </Layout>
     );
 };
 
-export default Yoga;
+export default YogaCourses;
