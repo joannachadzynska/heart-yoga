@@ -1,14 +1,16 @@
 import Head from "next/head";
 import * as React from "react";
+import Header from "../Header";
 
 const name = "Kinga";
 export const siteTitle = "Kinga Arii Yoga";
 
 export interface LayoutProps {
     home?: boolean;
+    page?: string;
 }
 
-const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
+const Layout: React.SFC<LayoutProps> = ({ children, home, page }) => {
     return (
         <>
             <Head>
@@ -26,8 +28,8 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
                 <meta name='og:title' content={siteTitle} />
                 <meta name='twitter:card' content='summary_large_image' />
             </Head>
-
-            <>{children}</>
+            <Header page={page} />
+            <main>{children}</main>
         </>
     );
 };

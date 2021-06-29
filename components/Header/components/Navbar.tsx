@@ -53,8 +53,9 @@ export interface NavbarProps {}
 const Navbar: React.SFC<NavbarProps> = () => {
     return (
         <motion.div className='container nav__group' variants={variants}>
-            <AnimatedLink href='/yoga'>Kursy</AnimatedLink>
+            <AnimatedLink href='/yoga-courses'>Kursy</AnimatedLink>
             <AnimatedLink href='/schedule'>Grafik</AnimatedLink>
+            <AnimatedLink href='/yoga-styles'>Joga</AnimatedLink>
             <AnimatedLink href='#about-me'>O mnie</AnimatedLink>
             <AnimatedLink href='/blog'>Blog</AnimatedLink>
             <AnimatedLink href='#testimonials'>Opinie</AnimatedLink>
