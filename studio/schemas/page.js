@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
     name: "page",
     title: "Page",
@@ -6,6 +7,12 @@ export default {
         {
             name: "title",
             title: "Page Title",
+            type: "string",
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: "heroIntro",
+            title: "Hero Intro",
             type: "string",
             validation: (Rule) => Rule.required(),
         },
@@ -20,9 +27,40 @@ export default {
             },
         },
         {
-            name: "content",
-            title: "Content",
-            type: "markdown",
+            name: "mainImage",
+            title: "Main image",
+            type: "image",
+            options: {
+                hotspot: true,
+            },
+            fields: [
+                {
+                    name: "alt",
+                    type: "string",
+                    title: "Alternative Text",
+                },
+            ],
+        },
+        {
+            name: "imagesGallery",
+            title: "Images Gallery",
+            type: "array",
+            of: [
+                {
+                    type: "image",
+                    name: "Image",
+                    options: {
+                        hotspot: true,
+                    },
+                    fields: [
+                        {
+                            name: "alt",
+                            type: "string",
+                            title: "Alternative Text",
+                        },
+                    ],
+                },
+            ],
         },
     ],
 };
