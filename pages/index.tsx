@@ -1,4 +1,4 @@
-import { Layout } from "components";
+import { About, Intro, Layout, Testimonials, YogaStyles } from "components";
 import Head from "next/head";
 import React from "react";
 
@@ -10,19 +10,13 @@ const Home = () => {
                 <meta name='Rytm Serca' />
             </Head>
 
-            <div className='hero'>hero banner</div>
+            <Intro />
 
-            <section className='intro'>intro</section>
+            <YogaStyles />
 
-            <section className='yoga-styles'>yoga styles</section>
+            <About />
 
-            <section className='about-me' id='about-me'>
-                about me
-            </section>
-
-            <section className='testimonials' id='testimonials'>
-                testimonials
-            </section>
+            <Testimonials />
         </Layout>
     );
 };

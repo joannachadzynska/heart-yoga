@@ -10,7 +10,7 @@ const Schedule = () => {
                 <meta name='Rytm Serca' />
             </Head>
 
-            <h1 className='title'>Grafik</h1>
+            <Schedule />
         </Layout>
     );
 };

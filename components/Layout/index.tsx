@@ -27,7 +27,7 @@ const Layout: React.SFC<LayoutProps> = ({ children, home }) => {
                 <meta name='twitter:card' content='summary_large_image' />
             </Head>
 
-            <section className='container'>{children}</section>
+            <>{children}</>
         </>
     );
 };
