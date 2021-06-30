@@ -17,7 +17,7 @@ const MountTransition: FC<Props> = ({
     <motion.div
         className='root-transition'
         key={routeKey}
-        exit={{ opacity: 0, x: slide, y: slideUp, overflow: "hidden" }}
+        exit={{ opacity: 0, x: slide, y: -slideUp, overflow: "hidden" }}
         initial={{
             opacity: 0,
             x: slide,
