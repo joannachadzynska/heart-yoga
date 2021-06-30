@@ -1,9 +1,12 @@
 .hero {
     min-height: calc(100vh - 5.975rem);
     background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     color: white;
     display: flex;
     isolation: isolate;
+    width: auto;
     .hero-intro {
         width: 40%;
         padding: 2em;
