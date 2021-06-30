@@ -55,10 +55,8 @@ const Navbar: React.SFC<NavbarProps> = () => {
         <motion.div className='container nav__group' variants={variants}>
             <AnimatedLink href='/yoga-courses'>Kursy</AnimatedLink>
             <AnimatedLink href='/schedule'>Grafik</AnimatedLink>
-            <AnimatedLink href='/yoga-styles'>Joga</AnimatedLink>
-            <AnimatedLink href='#about-me'>O mnie</AnimatedLink>
             <AnimatedLink href='/blog'>Blog</AnimatedLink>
-            <AnimatedLink href='#testimonials'>Opinie</AnimatedLink>
+            <AnimatedLink href='#contact'>Kontakt</AnimatedLink>
         </motion.div>
     );
 };
