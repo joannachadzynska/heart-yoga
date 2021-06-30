@@ -1,6 +1,5 @@
 .hero {
     min-height: calc(100vh - 5.975rem);
-    background-image: url("https://images.unsplash.com/photo-1623169840544-0982db65d00e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyNDM5MDIxNg");
     background-size: cover;
     color: white;
     display: flex;
@@ -17,8 +16,6 @@
             inset: 0;
             z-index: -1;
             background: #355f08;
-            // background: linear-gradient(-45deg, green,yellow,red);
-            // opacity: .5;
             mix-blend-mode: multiply;
         }
     }
