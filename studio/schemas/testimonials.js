@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
-    name: "yogaStyle",
-    title: "Yoga Style",
+    name: "testimonials",
+    title: "Testimonials",
     type: "document",
     fields: [
         {
@@ -11,8 +11,8 @@ export default {
             type: "string",
         },
         {
-            name: "excerpt",
-            title: "Excerpt",
+            name: "author",
+            title: "Author",
             type: "string",
         },
         {
@@ -40,46 +40,9 @@ export default {
             ],
         },
         {
-            name: "imagesGallery",
-            title: "Images Gallery",
-            type: "array",
-            of: [
-                {
-                    type: "image",
-                    name: "Image",
-                    options: {
-                        hotspot: true,
-                    },
-                    fields: [
-                        {
-                            name: "alt",
-                            type: "string",
-                            title: "Alternative Text",
-                        },
-                    ],
-                },
-            ],
-        },
-        {
             name: "body",
             title: "Body",
             type: "blockContent",
-        },
-        {
-            name: "links",
-            title: "Links",
-            type: "array",
-            of: [
-                {
-                    type: "url",
-                    name: "href",
-                    title: "Link",
-                    validation: (Rule) =>
-                        Rule.uri({
-                            scheme: ["http", "https", "mailto", "tel"],
-                        }),
-                },
-            ],
         },
     ],
 
