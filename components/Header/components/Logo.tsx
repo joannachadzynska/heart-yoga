@@ -12,6 +12,7 @@ const Logo: React.SFC<LogoProps> = () => {
                 alt='kinga arii yoga logo'
                 width={70}
                 height={70}
+                className='logo'
             />
         </Link>
     );

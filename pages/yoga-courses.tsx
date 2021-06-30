@@ -24,7 +24,6 @@ const pageQuery = `*[_type=="page" && title==$title] [0] {
         url
         }
     },
-  
 }`;
 
 const YogaCourses: React.FC<PageComponentProps> = ({ page }) => {
