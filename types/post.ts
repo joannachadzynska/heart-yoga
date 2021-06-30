@@ -27,7 +27,7 @@ export interface ImageGallery {
         url: string;
     };
 }
-export interface PostSlug {
+export interface Slug {
     _type: string;
     current: string;
 }
@@ -56,7 +56,7 @@ export interface Post {
     mainImage: PostImage;
     imagesGallery: ImageGallery[];
     publishedAt: string;
-    slug: PostSlug;
+    slug: Slug;
     title: string;
     likes: number;
 }
