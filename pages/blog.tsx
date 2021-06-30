@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import utilStyles from "styles/utils.module.scss";
 import { Post } from "types/post";
+import { Page } from "./../types/page";
 
 const postQuery = `*[_type=="post"]{
     _id,
@@ -25,9 +26,31 @@ const postQuery = `*[_type=="post"]{
     }
 }`;
 
-const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
+const pageQuery = `*[_type=="page" && title==$title] [0] {
+    _id,
+    heroIntro,
+    title,
+    slug,
+    mainImage{
+        alt,
+        "asset": asset->{
+        _id,
+        url
+        }
+    },
+        imagesGallery[]{
+    alt,
+    "asset": asset->{
+        _id,
+        url
+        }
+    },
+  
+}`;
+
+const Blog: React.FC<{ posts: Post[]; page: Page }> = ({ posts, page }) => {
     return (
-        <Layout page='blog'>
+        <Layout page='blog' pageDetails={page}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
@@ -61,11 +84,14 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
+    const title = "blog";
+    const page = await sanityClient.fetch(pageQuery, { title });
     const posts = await sanityClient.fetch(postQuery);
 
     return {
         props: {
             posts,
+            page,
         },
 
         revalidate: 10,
