@@ -21,6 +21,10 @@ main {
     margin-top: 1rem;
 }
 
+header {
+    isolation: isolate;
+}
+
 footer {
     flex-shrink: 0;
     background-color: var(--clr-primary-400);

@@ -1,25 +1,55 @@
+@use '../abstracts' as *;
+@use '../utilities' as *;
+
 .hero {
-    min-height: calc(100vh - 5.975rem);
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
+    min-height: 80vh;
+    // margin-top: -5.975rem;
     color: white;
     display: flex;
     isolation: isolate;
-    width: auto;
+    mix-blend-mode: soft-light;
+    background: var(--clr-neutral-300);
+    position: relative;
+
+    @include mq(small) {
+        min-height: 100vh;
+        margin-top: -5.975rem;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #969999;
+        mix-blend-mode: multiply;
+    }
+
     .hero-intro {
-        width: 40%;
         padding: 2em;
-        padding-top: min(15vh, 10rem);
+        padding-top: min(30vh, 20rem);
         position: relative;
+        text-align: center;
+
+        @include mq(small) {
+            width: 40%;
+            text-align: left;
+        }
 
         &::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: #355f08;
-            mix-blend-mode: multiply;
+        }
+
+        &__title {
+            color: #fff;
+            text-shadow: 1px 3px 6px rgba(0, 0, 0, 0.6);
+            line-height: 1.6;
+            @include mq(small) {
+                line-height: 1.1;
+            }
         }
     }
 }
