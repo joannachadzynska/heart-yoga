@@ -1,4 +1,5 @@
 import { sanityClient } from "@/lib/sanity";
+import { Course } from "@/types/course";
 import { Layout } from "components";
 import { GetStaticProps } from "next";
 import Head from "next/head";
@@ -26,7 +27,28 @@ const pageQuery = `*[_type=="page" && title==$title] [0] {
     },
 }`;
 
-const YogaCourses: React.FC<PageComponentProps> = ({ page }) => {
+const courseQuery = `*[_type=="yogaCourses"] {
+    _id,
+    slug,
+    title,
+    body,
+    mainImage{
+        alt,
+        "asset": asset->{
+        _id,
+        url
+        }
+    }
+}`;
+
+export interface CoursesProps {
+    courses: Course[];
+}
+
+const YogaCourses: React.FC<PageComponentProps & CoursesProps> = ({
+    page,
+    courses,
+}) => {
     return (
         <Layout page='yoga-courses' pageDetails={page}>
             <Head>
@@ -44,9 +66,11 @@ const YogaCourses: React.FC<PageComponentProps> = ({ page }) => {
 export const getStaticProps: GetStaticProps = async () => {
     const title = "yoga courses";
     const page = await sanityClient.fetch(pageQuery, { title });
+    const courses = await sanityClient.fetch(courseQuery);
     return {
         props: {
             page,
+            courses,
         },
     };
 };

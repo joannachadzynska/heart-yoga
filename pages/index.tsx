@@ -1,3 +1,4 @@
+import { Course } from "@/types/course";
 import { Page } from "@/types/page";
 import { About, Intro, Layout, Testimonials, YogaStyles } from "components";
 import { GetStaticProps } from "next";
@@ -24,16 +25,31 @@ const pageQuery = `*[_type=="page" && title==$title] [0] {
         url
         }
     },
-  
+}`;
+
+const courseQuery = `*[_type=="yogaCourses"] {
+    _id,
+    slug,
+    title,
+    body,
+    mainImage{
+        alt,
+        "asset": asset->{
+        _id,
+        url
+        }
+    }
 }`;
 
 export interface PageComponentProps {
     page: Page;
 }
 
-const Home: React.FC<PageComponentProps> = ({ page }) => {
-    const { heroIntro, mainImage, slug, title } = page;
+export interface HomeProps {
+    courses: Course[];
+}
 
+const Home: React.FC<PageComponentProps & HomeProps> = ({ page, courses }) => {
     return (
         <Layout home page='home' pageDetails={page}>
             <Head>
@@ -43,7 +59,7 @@ const Home: React.FC<PageComponentProps> = ({ page }) => {
 
             <Intro />
 
-            <YogaStyles />
+            <YogaStyles courses={courses} />
 
             <About />
 
@@ -55,9 +71,11 @@ const Home: React.FC<PageComponentProps> = ({ page }) => {
 export const getStaticProps: GetStaticProps = async () => {
     const title = "home";
     const page = await sanityClient.fetch(pageQuery, { title });
+    const courses = await sanityClient.fetch(courseQuery);
     return {
         props: {
             page,
+            courses,
         },
     };
 };
