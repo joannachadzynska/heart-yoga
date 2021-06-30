@@ -2,7 +2,7 @@ import { Page } from "@/types/page";
 import React from "react";
 
 export interface HeroProps {
-    title: string;
+    title?: string;
     pageDetails?: Page | undefined;
 }
 

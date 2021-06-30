@@ -66,7 +66,7 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
     };
 
     return (
-        <Layout>
+        <Layout page='blog item'>
             <Head>
                 <title>{title}</title>
             </Head>

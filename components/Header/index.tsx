@@ -3,7 +3,7 @@ import * as React from "react";
 import { Hero, Navigation } from "./components";
 
 export interface HeaderProps {
-    page: string;
+    page?: string;
     pageDetails?: Page | undefined;
 }
 

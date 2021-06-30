@@ -8,7 +8,7 @@ export const siteTitle = "Kinga Arii Yoga";
 
 export interface LayoutProps {
     home?: boolean;
-    page: string;
+    page?: string;
     pageDetails?: Page | undefined;
 }
 
