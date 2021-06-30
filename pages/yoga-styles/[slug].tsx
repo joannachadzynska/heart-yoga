@@ -14,7 +14,7 @@ const YogaStyle = () => {
     }
 
     return (
-        <Layout>
+        <Layout page='yoga courses'>
             <Head>
                 <title>yoga style</title>
             </Head>

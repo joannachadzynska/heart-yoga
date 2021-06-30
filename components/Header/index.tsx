@@ -4,7 +4,7 @@ import { Hero, Navigation } from "./components";
 
 export interface HeaderProps {
     page: string;
-    pageDetails: Page;
+    pageDetails?: Page | undefined;
 }
 
 const Header: React.SFC<HeaderProps> = ({ page, pageDetails }) => {

@@ -9,7 +9,7 @@ export const siteTitle = "Kinga Arii Yoga";
 export interface LayoutProps {
     home?: boolean;
     page: string;
-    pageDetails: Page;
+    pageDetails?: Page | undefined;
 }
 
 const Layout: React.SFC<LayoutProps> = ({
