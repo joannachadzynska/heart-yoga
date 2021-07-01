@@ -98,6 +98,7 @@ export const getStaticProps: GetStaticProps = async () => {
             courses,
             testimonials,
         },
+        revalidate: 10,
     };
 };
 

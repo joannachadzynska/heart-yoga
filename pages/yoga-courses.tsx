@@ -72,6 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
             page,
             courses,
         },
+        revalidate: 10,
     };
 };
 
