@@ -7,8 +7,6 @@ export interface YogaStyles {
 }
 
 const YogaStyles: React.SFC<YogaStyles> = ({ courses }) => {
-    console.log(courses);
-
     return (
         <section className='courses-home__container' id='about-me'>
             <div className='courses-home'>
