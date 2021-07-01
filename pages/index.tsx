@@ -1,5 +1,6 @@
 import { Course } from "@/types/course";
 import { Page } from "@/types/page";
+import { Testimonial } from "@/types/testimonial";
 import { About, Intro, Layout, Testimonials, YogaStyles } from "components";
 import { GetStaticProps } from "next";
 import Head from "next/head";
@@ -40,6 +41,19 @@ const courseQuery = `*[_type=="yogaCourses"] {
         }
     }
 }`;
+const testimonialQuery = `*[_type=="testimonials"] {
+    _id,
+    author,
+    body,
+    mainImage{
+    alt,
+    "asset": asset->{
+        _id,
+        url
+        }
+    },
+    slug
+}`;
 
 export interface PageComponentProps {
     page: Page;
@@ -47,9 +61,14 @@ export interface PageComponentProps {
 
 export interface HomeProps {
     courses: Course[];
+    testimonials: Testimonial[];
 }
 
-const Home: React.FC<PageComponentProps & HomeProps> = ({ page, courses }) => {
+const Home: React.FC<PageComponentProps & HomeProps> = ({
+    page,
+    courses,
+    testimonials,
+}) => {
     return (
         <Layout home page='home' pageDetails={page}>
             <Head>
@@ -63,7 +82,7 @@ const Home: React.FC<PageComponentProps & HomeProps> = ({ page, courses }) => {
 
             <About />
 
-            <Testimonials />
+            <Testimonials testimonials={testimonials} />
         </Layout>
     );
 };
@@ -72,10 +91,12 @@ export const getStaticProps: GetStaticProps = async () => {
     const title = "home";
     const page = await sanityClient.fetch(pageQuery, { title });
     const courses = await sanityClient.fetch(courseQuery);
+    const testimonials = await sanityClient.fetch(testimonialQuery);
     return {
         props: {
             page,
             courses,
+            testimonials,
         },
     };
 };
