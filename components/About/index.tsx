@@ -8,7 +8,7 @@ const About: React.SFC<AboutProps> = () => {
         <section className='container' id='about-me'>
             <div className='about-container'>
                 <div className='about__image'>
-                    <img src='/images/about-me.jpg' alt='about me ' />
+                    <img src='/images/about-me.JPG' alt='about me ' />
                 </div>
                 <div className='about__content'>
                     <p className='about__text'>
