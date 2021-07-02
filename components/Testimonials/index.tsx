@@ -8,8 +8,6 @@ export interface TestimonialsProps {
 }
 
 const Testimonials: React.SFC<TestimonialsProps> = ({ testimonials }) => {
-    console.log(testimonials);
-
     const [slideIndex, setSlideIndex] = useState(1);
 
     const length = Array.from(
