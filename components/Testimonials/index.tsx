@@ -2,10 +2,77 @@
 import { PortableText } from "@/lib/sanity";
 import { Testimonial } from "@/types/testimonial";
 import React, { useState } from "react";
+import Slider from "react-slick"; // requires a loader
 
 export interface TestimonialsProps {
     testimonials: Testimonial[];
 }
+
+const arrowStyles = {
+    background: "#888",
+    top: "60%",
+    width: "auto",
+    marginTop: "-30px",
+    padding: "16px",
+};
+
+const NextArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            onClick={onClick}
+            className={className}
+            style={{ ...style, ...arrowStyles }}></div>
+    );
+};
+const PrevArrow: React.FC = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            onClick={onClick}
+            className={className}
+            style={{ ...style, ...arrowStyles }}>
+            &#10094;
+        </div>
+    );
+};
+
+const settings = {
+    className: "",
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    speed: 500,
+    adaptiveHeight: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    // autoplay: true,
+};
+
+const CustomSlide = ({ testimonial }: { testimonial: Testimonial }) => {
+    return (
+        <div className='card-container'>
+            <div className='card'>
+                <figure className='card-thumb'>
+                    <img
+                        className='client-img'
+                        src={testimonial.mainImage.asset.url}
+                        alt={testimonial.author}
+                    />
+                </figure>
+                <div className='card-body'>
+                    <PortableText
+                        blocks={testimonial.body}
+                        className='review'
+                    />
+
+                    <span className='client-name'>{testimonial.author}</span>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const Testimonials: React.SFC<TestimonialsProps> = ({ testimonials }) => {
     const [slideIndex, setSlideIndex] = useState(1);
@@ -37,52 +104,31 @@ const Testimonials: React.SFC<TestimonialsProps> = ({ testimonials }) => {
 
     return (
         <section className='testimonials-container' id='testimonials'>
+            <h2>Opinie uczestników</h2>
             <div className='slider container'>
-                <h2>Opinie uczestników</h2>
-                <div className='testimonials'>
+                <Slider {...settings}>
                     {testimonials.map((item, idx) => (
-                        <div
-                            key={item._id}
-                            className='card'
-                            style={{
-                                display:
-                                    idx + 1 === slideIndex ? "flex" : "none",
-                            }}>
-                            <figure className='card-thumb'>
-                                <img
-                                    className='client-img'
-                                    src={item.mainImage.asset.url}
-                                    alt={item.author}
-                                />
-                            </figure>
-                            <div className='card-body'>
-                                <PortableText
-                                    blocks={item.body}
-                                    className='review'
-                                />
-
-                                <span className='client-name'>
-                                    {item.author}
-                                </span>
-                            </div>
-                        </div>
+                        <CustomSlide key={item._id} testimonial={item} />
                     ))}
-                </div>
-                <a className='prev' onClick={() => plusSlides(-1)}>
+                </Slider>
+            </div>
+
+            {/* <a className='prev' onClick={() => plusSlides(-1)}>
                     &#10094;
                 </a>
                 <a className='next' onClick={() => plusSlides(1)}>
                     &#10095;
                 </a>
-            </div>
-            <div className='indicators'>
-                {length.map((el) => (
-                    <span
-                        key={el}
-                        className={el === slideIndex ? "dot active" : "dot"}
-                        onClick={() => currentSlide(el)}></span>
-                ))}
-            </div>
+
+                <div className='indicators'>
+                    {length.map((el) => (
+                        <span
+                            role='button'
+                            key={el}
+                            className={el === slideIndex ? "dot active" : "dot"}
+                            onClick={() => currentSlide(el)}></span>
+                    ))}
+                </div> */}
         </section>
     );
 };

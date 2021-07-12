@@ -6,7 +6,7 @@ export interface HeroProps {
     pageDetails?: Page | undefined;
 }
 
-const Hero: React.SFC<HeroProps> = ({ pageDetails, title }) => {
+const Hero: React.SFC<HeroProps> = ({ pageDetails }) => {
     if (!pageDetails) return <div>Loading...</div>;
     const { heroIntro, mainImage } = pageDetails;
 
