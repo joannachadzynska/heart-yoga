@@ -8,32 +8,26 @@ export interface TestimonialsProps {
     testimonials: Testimonial[];
 }
 
-const arrowStyles = {
-    background: "#888",
-    top: "60%",
-    width: "auto",
-    marginTop: "-30px",
-    padding: "16px",
-};
-
 const NextArrow: React.FC = (props: any) => {
     const { className, style, onClick } = props;
     return (
         <div
             onClick={onClick}
-            className={className}
-            style={{ ...style, ...arrowStyles }}></div>
+            className={`${className} next`}
+            style={{ ...style }}>
+            <span>&#10095;</span>
+        </div>
     );
 };
 const PrevArrow: React.FC = (props: any) => {
     const { className, style, onClick } = props;
     return (
-        <div
+        <button
             onClick={onClick}
-            className={className}
-            style={{ ...style, ...arrowStyles }}>
-            &#10094;
-        </div>
+            className={`${className} prev`}
+            style={{ ...style }}>
+            <span>&#10094;</span>
+        </button>
     );
 };
 
@@ -44,10 +38,10 @@ const settings = {
     slidesToScroll: 1,
     infinite: true,
     speed: 500,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    // autoplay: true,
+    autoplay: true,
 };
 
 const CustomSlide = ({ testimonial }: { testimonial: Testimonial }) => {
