@@ -70,7 +70,11 @@ const Home: React.FC<PageComponentProps & HomeProps> = ({
     testimonials,
 }) => {
     return (
-        <Layout home page='home' pageDetails={page}>
+        <Layout
+            home
+            page='home'
+            banner={page.mainImage.asset.url}
+            heroIntro={page.heroIntro}>
             <Head>
                 <title>Rytm Serca</title>
                 <meta name='Rytm Serca' />
