@@ -41,6 +41,7 @@ const courseQuery = `*[_type=="yogaCourses"] {
         }
     }
 }`;
+
 const testimonialQuery = `*[_type=="testimonials"] {
     _id,
     author,
