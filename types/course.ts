@@ -1,4 +1,4 @@
-import { MainImage } from "./image";
+import { ImageGallery, MainImage } from "./image";
 import { Slug } from "./post";
 
 export interface BodyChildren {
@@ -19,6 +19,7 @@ export interface Course {
     _id: string;
     body: CourseBody[];
     mainImage: MainImage;
+    imagesGallery: ImageGallery[];
     slug: Slug;
     title: string;
 }

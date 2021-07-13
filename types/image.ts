@@ -7,6 +7,7 @@ export interface MainImage {
 }
 
 export interface ImageGallery {
+    _key?: string;
     alt: string;
     asset: {
         _id: string;
