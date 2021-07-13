@@ -1,20 +1,21 @@
-import { Page } from "@/types/page";
 import React from "react";
 
 export interface HeroProps {
     title?: string;
-    pageDetails?: Page | undefined;
+    banner: string;
+    heroIntro: string;
 }
 
-const Hero: React.SFC<HeroProps> = ({ pageDetails }) => {
-    if (!pageDetails) return <div>Loading...</div>;
-    const { heroIntro, mainImage } = pageDetails;
+const Hero: React.SFC<HeroProps> = ({ banner, heroIntro }) => {
+    if (!banner) return <div>Loading...</div>;
+
+    console.log(heroIntro);
 
     return (
         <div
             className='hero'
             style={{
-                backgroundImage: `url(${mainImage.asset.url})`,
+                backgroundImage: `url(${banner})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center center",

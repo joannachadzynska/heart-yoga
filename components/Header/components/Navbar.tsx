@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/link-passhref */
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 export interface NavigationProps {}
@@ -19,6 +20,7 @@ interface LinkProps {
 }
 
 export const AnimatedLink: React.FC<LinkProps> = ({ href, children }) => {
+    const router = useRouter();
     const variantsItem = {
         open: {
             y: 0,
@@ -35,10 +37,15 @@ export const AnimatedLink: React.FC<LinkProps> = ({ href, children }) => {
             },
         },
     };
+
     return (
         <Link href={href}>
             <motion.a
-                className='nav__link'
+                className={
+                    router.asPath === href
+                        ? "nav__link active__link"
+                        : "nav__link"
+                }
                 variants={variantsItem}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}>

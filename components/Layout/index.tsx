@@ -10,13 +10,15 @@ export interface LayoutProps {
     home?: boolean;
     page?: string;
     pageDetails?: Page | undefined;
+    banner: string;
+    heroIntro: string;
 }
 
 const Layout: React.SFC<LayoutProps> = ({
     children,
-    home,
     page,
-    pageDetails,
+    banner,
+    heroIntro,
 }) => {
     return (
         <>
@@ -35,7 +37,7 @@ const Layout: React.SFC<LayoutProps> = ({
                 <meta name='og:title' content={siteTitle} />
                 <meta name='twitter:card' content='summary_large_image' />
             </Head>
-            <Header page={page} pageDetails={pageDetails} />
+            <Header page={page} banner={banner} heroIntro={heroIntro} />
             <main>{children}</main>
         </>
     );
