@@ -17,7 +17,8 @@ const YogaStyles: React.SFC<YogaStyles> = ({ courses }) => {
                             style={{
                                 backgroundImage: `url(${course.mainImage.asset.url})`,
                             }}>
-                            <Link href={`/yoga-courses/${course.slug.current}`}>
+                            <Link
+                                href={`/yoga-courses/${course?.slug?.current}`}>
                                 {course.title}
                             </Link>
                         </div>
