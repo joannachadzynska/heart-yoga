@@ -62,16 +62,6 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
                             <PortableText blocks={body} />
 
                             <br />
-                            <div>
-                                {/* {imagesGallery !== undefined &&
-                                imagesGallery.map((img) => (
-                                    <img
-                                        key={img._key + img.alt}
-                                        src={img.asset.url}
-                                        alt={img.alt}
-                                    />
-                                ))} */}
-                            </div>
                         </main>
                     </article>
                 )}
