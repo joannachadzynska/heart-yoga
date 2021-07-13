@@ -33,13 +33,13 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
     const router = useRouter();
 
     if (router.isFallback) {
-        // return <div>Loading...</div>;
+        return <div>Loading...</div>;
     }
 
     const { data: course }: { data: ICourse } = usePreviewSubscription(
         courseQuery,
         {
-            params: { slug: data.slug?.current },
+            params: { slug: data.slug.current },
             initialData: data,
             enabled: preview,
         }
