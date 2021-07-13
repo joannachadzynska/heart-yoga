@@ -29,7 +29,10 @@ const pageQuery = `*[_type=="page" && title==$title] [0] {
 
 const Schedule: React.FC<PageComponentProps> = ({ page }) => {
     return (
-        <Layout page='schedule' pageDetails={page}>
+        <Layout
+            page='schedule'
+            banner={page.mainImage.asset.url}
+            heroIntro={page.heroIntro}>
             <Head>
                 <title>Grafik</title>
                 <meta name='Rytm Serca' />

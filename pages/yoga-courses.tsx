@@ -50,7 +50,10 @@ const YogaCourses: React.FC<PageComponentProps & CoursesProps> = ({
     courses,
 }) => {
     return (
-        <Layout page='yoga-courses' pageDetails={page}>
+        <Layout
+            page='yoga-courses'
+            heroIntro={page.heroIntro}
+            banner={page.mainImage.asset.url}>
             <Head>
                 <title>Kurs Jogi</title>
                 <meta name='Rytm Serca' />

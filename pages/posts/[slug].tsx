@@ -66,7 +66,7 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
     };
 
     return (
-        <Layout page='blog item'>
+        <Layout page='post' banner={mainImage.asset.url} heroIntro={title}>
             <Head>
                 <title>{title}</title>
             </Head>
@@ -97,7 +97,7 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
 
             <h2>
                 <Link href='/blog'>
-                    <a>Back to blog</a>
+                    <a>Wróć na blog</a>
                 </Link>
             </h2>
         </Layout>

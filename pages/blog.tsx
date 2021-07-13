@@ -50,7 +50,10 @@ const pageQuery = `*[_type=="page" && title==$title] [0] {
 
 const Blog: React.FC<{ posts: Post[]; page: Page }> = ({ posts, page }) => {
     return (
-        <Layout page='blog' pageDetails={page}>
+        <Layout
+            page='blog'
+            banner={page.mainImage.asset.url}
+            heroIntro={page.heroIntro}>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
