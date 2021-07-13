@@ -52,18 +52,18 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
             <Head>
                 <title>{title}</title>
             </Head>
-            {course !== null && (
-                <article>
-                    <h1>{title}</h1>
 
-                    <main>
-                        <img src={mainImage.asset?.url} alt={mainImage.alt} />
+            <section className='container'>
+                {course !== null && (
+                    <article>
+                        <h2>{title}</h2>
 
-                        <PortableText blocks={body} />
+                        <main>
+                            <PortableText blocks={body} />
 
-                        <br />
-                        <div>
-                            {/* {imagesGallery !== undefined &&
+                            <br />
+                            <div>
+                                {/* {imagesGallery !== undefined &&
                                 imagesGallery.map((img) => (
                                     <img
                                         key={img._key + img.alt}
@@ -71,16 +71,18 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
                                         alt={img.alt}
                                     />
                                 ))} */}
-                        </div>
-                    </main>
-                </article>
-            )}
+                            </div>
+                        </main>
+                    </article>
+                )}
 
-            <h2>
-                <Link href='/blog'>
-                    <a>Wróć do moich kursów</a>
-                </Link>
-            </h2>
+                <h4>
+                    <Link href='/yoga-courses'>
+                        <a>Wróć do moich kursów</a>
+                    </Link>
+                </h4>
+                <br />
+            </section>
         </Layout>
     );
 };

@@ -70,36 +70,36 @@ const Post = ({ data, preview }: { data: IPost; preview: boolean }) => {
             <Head>
                 <title>{title}</title>
             </Head>
-            {post !== null && (
-                <article>
-                    <h1>{title}</h1>
-                    <button onClick={addLike}>{likes} ❤</button>
-                    <main>
-                        <img src={mainImage.asset?.url} alt={mainImage.alt} />
+            <section className='container'>
+                {post !== null && (
+                    <article>
+                        <h2>{title}</h2>
+                        <button onClick={addLike}>{likes} ❤</button>
+                        <main>
+                            <PortableText blocks={body} />
 
-                        <PortableText blocks={body} />
-
-                        <br />
-                        <div>
-                            {imagesGallery.map((img) => (
-                                <img
-                                    key={img._key + img.alt}
-                                    src={img.asset.url}
-                                    alt={img.alt}
-                                />
-                            ))}
-                        </div>
-                        <small>{publishedAt}</small>
-                        <small>{author}</small>
-                    </main>
-                </article>
-            )}
-
-            <h2>
-                <Link href='/blog'>
-                    <a>Wróć na blog</a>
-                </Link>
-            </h2>
+                            <br />
+                            <div>
+                                {imagesGallery.map((img) => (
+                                    <img
+                                        key={img._key + img.alt}
+                                        src={img.asset.url}
+                                        alt={img.alt}
+                                    />
+                                ))}
+                            </div>
+                            <small>{publishedAt}</small>
+                            <small>{author}</small>
+                        </main>
+                    </article>
+                )}
+                <h4>
+                    <Link href='/blog'>
+                        <a>Wróć na blog</a>
+                    </Link>
+                </h4>
+                <br />
+            </section>
         </Layout>
     );
 };
