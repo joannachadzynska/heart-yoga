@@ -120,7 +120,7 @@
         .review {
             white-space: pre-wrap;
             word-break: break-word;
-            font-family: "Noticia Text", serif;
+            font-family: "Noticia Text", serif !important;
             font-style: italic;
             color: hsl(250, 5%, 45%);
             font-weight: 400;
@@ -128,11 +128,15 @@
             height: 100%;
             margin: 1rem 0 3rem;
 
+            p {
+                font-family: "Noticia Text", serif !important;
+            }
+
             &::before,
             &::after {
                 position: absolute;
                 display: block;
-                font-size: 30em;
+                font-size: clamp(25em, 5vw, 30em);
                 opacity: 0.2;
                 line-height: 0;
                 color: var(--clr-primary-400);

@@ -51,9 +51,6 @@
     position: relative;
     width: 100%;
 
-    img {
-    }
-
     @include mq(medium) {
         min-height: 50vh;
         img {
