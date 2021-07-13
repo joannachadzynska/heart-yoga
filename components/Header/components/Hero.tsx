@@ -18,7 +18,7 @@ const Hero: React.SFC<HeroProps> = ({ banner, heroIntro }) => {
                 backgroundImage: `url(${banner})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                backgroundPosition: "center center",
+                backgroundPosition: "top center",
                 backgroundAttachment: "fixed",
             }}>
             <div className='container' style={{ width: "100%" }}>
