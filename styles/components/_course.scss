@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+.course {
+    line-height: 1.8;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+
+    .course-gallery {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 1em;
+        img {
+            object-fit: cover;
+            max-width: 30%;
+        }
+    }
+
+    div:nth-child(1) {
+    }
+
+    @include mq(medium) {
+        div:nth-child(1) {
+            // max-width: 45ch;
+        }
+        .course-gallery {
+            width: 50%;
+        }
+    }
+}

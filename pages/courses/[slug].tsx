@@ -47,6 +47,8 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
 
     const { _id, body, title, mainImage, imagesGallery } = course;
 
+    console.log(imagesGallery);
+
     return (
         <Layout page='course' banner={mainImage.asset.url} heroIntro={title}>
             <Head>
@@ -56,12 +58,12 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
             <section className='container'>
                 {course !== null && (
                     <article>
-                        <h2>{title}</h2>
+                        <h2 style={{ marginTop: "1em" }}>{title}</h2>
 
-                        <main>
+                        <main className='course'>
                             <PortableText blocks={body} />
 
-                            <br />
+                            <div className='course-gallery'></div>
                         </main>
                     </article>
                 )}

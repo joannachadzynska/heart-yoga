@@ -60,7 +60,13 @@ const YogaCourses: React.FC<PageComponentProps & CoursesProps> = ({
             </Head>
 
             <section className='container'>
-                <h1 className='title'>Kursy jogi</h1>
+                <ul>
+                    {courses.map((course) => (
+                        <li key={course._id}>
+                            <p>{course.title}</p>
+                        </li>
+                    ))}
+                </ul>
             </section>
         </Layout>
     );

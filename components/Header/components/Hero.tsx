@@ -7,9 +7,7 @@ export interface HeroProps {
 }
 
 const Hero: React.SFC<HeroProps> = ({ banner, heroIntro }) => {
-    if (!banner) return <div>Loading...</div>;
-
-    console.log(heroIntro);
+    if (!banner) return <div></div>;
 
     return (
         <div

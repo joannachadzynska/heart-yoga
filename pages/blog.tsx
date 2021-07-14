@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-key */
 import { siteTitle } from "@/components/Layout";
-import { Layout } from "components";
+import { ComingSoon, Layout } from "components";
 import { sanityClient } from "lib/sanity";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
-import utilStyles from "styles/utils.module.scss";
 import { Post } from "types/post";
 import { Page } from "./../types/page";
 
@@ -59,8 +57,7 @@ const Blog: React.FC<{ posts: Post[]; page: Page }> = ({ posts, page }) => {
             </Head>
 
             <section className='container'>
-                <h2 className={utilStyles.headingLg}>Blog</h2>
-                <ul className={utilStyles.list}>
+                {/* <ul className={utilStyles.list}>
                     {posts.length > 0 &&
                         posts.map((post) => (
                             <li key={post._id}>
@@ -80,7 +77,8 @@ const Blog: React.FC<{ posts: Post[]; page: Page }> = ({ posts, page }) => {
                                 <small>{post.author}</small>
                             </li>
                         ))}
-                </ul>
+                </ul> */}
+                <ComingSoon />
             </section>
         </Layout>
     );
