@@ -45,9 +45,8 @@ const Course = ({ data, preview }: { data: ICourse; preview: boolean }) => {
         }
     );
 
-    const { _id, body, title, mainImage, imagesGallery } = course;
+    const { _id, body, title, mainImage, imagesGallery } = course
 
-    console.log(imagesGallery);
 
     return (
         <Layout page='course' banner={mainImage.asset.url} heroIntro={title}>
